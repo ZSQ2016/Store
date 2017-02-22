@@ -1,7 +1,7 @@
-		<!-- Project Object Model，项目对象模型。通过xml格式保存的pom.xml文件。作用类似ant的build.xml文件，功能更强大。 
-	该文件用于管理：源代码、配置文件、开发者的信息和角色、问题追踪系统、组织信息、项目授权、项目的url、项目的依赖关系等等。 -->
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
 	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
+	<!-- Project Object Model，项目对象模型。通过xml格式保存的pom.xml文件。作用类似ant的build.xml文件，功能更强大。 
+		该文件用于管理：源代码、配置文件、开发者的信息和角色、问题追踪系统、组织信息、项目授权、项目的url、项目的依赖关系等等。 -->
 	<modelVersion>4.0.0</modelVersion>
 	<groupId>org.store</groupId>
 	<artifactId>store</artifactId>
@@ -19,9 +19,9 @@
 		<!--Spring版本号 -->
 		<spring.version>4.0.2.RELEASE</spring.version>
 		<!-- mybatis的版本号 -->
-		<mybatis.version>3.2.8</mybatis.version>
+		<mybatis.version>3.2.6</mybatis.version>
 		<!-- log4j日志文件管理包版本 -->
-		<slf4j.version>1.7.12</slf4j.version>
+		<slf4j.version>1.7.7</slf4j.version>
 		<log4j.version>1.2.17</log4j.version>
 	</properties>
 	<dependencies>
@@ -29,7 +29,7 @@
 		<dependency>
 			<groupId>junit</groupId>
 			<artifactId>junit</artifactId>
-			<version>3.8.1</version>
+			<version>4.11</version>
 			<!-- 表示开发的时候用，发布的时候不会加载该包 -->
 			<scope>test</scope>
 		</dependency>
@@ -107,24 +107,24 @@
 		<dependency>
 			<groupId>mysql</groupId>
 			<artifactId>mysql-connector-java</artifactId>
-			<version>5.1.35</version>
+			<version>5.1.30</version>
 		</dependency>
 
 		<!-- jdbc的jar包 用来在application.xml中配置数据库 -->
 		<dependency>
 			<groupId>commons-dbcp</groupId>
 			<artifactId>commons-dbcp</artifactId>
-			<version>1.4</version>
+			<version>1.2.2</version>
 		</dependency>
-		
+
 		<!-- JSTL标签类 -->
 		<dependency>
 			<groupId>jstl</groupId>
 			<artifactId>jstl</artifactId>
-			<version>1.2</version>			
+			<version>1.2</version>
 		</dependency>
-		
-		<!-- log start-->
+
+		<!-- log start -->
 		<dependency>
 			<groupId>log4j</groupId>
 			<artifactId>log4j</artifactId>
@@ -140,21 +140,21 @@
 			<artifactId>slf4j-log4j12</artifactId>
 			<version>${slf4j.version}</version>
 		</dependency>
-		
-		<!-- JSON  -->
+
+		<!-- JSON -->
 		<!-- 格式化对象，方便输出日志 -->
 		<dependency>
 			<groupId>com.alibaba</groupId>
 			<artifactId>fastjson</artifactId>
-			<version>1.2.6</version>			
-		</dependency>		
+			<version>1.2.6</version>
+		</dependency>
 		<dependency>
 			<groupId>org.codehaus.jackson</groupId>
 			<artifactId>jackson-mapper-asl</artifactId>
 			<version>1.9.13</version>
 		</dependency>
-		
-			<!-- 上传组件包 start -->
+
+		<!-- 上传组件包 start -->
 		<dependency>
 			<groupId>commons-fileupload</groupId>
 			<artifactId>commons-fileupload</artifactId>
@@ -170,9 +170,21 @@
 			<artifactId>commons-codec</artifactId>
 			<version>1.10</version>
 		</dependency>
-		<!-- 上传组件包 end -->		
+		<!-- 上传组件包 end -->
 	</dependencies>
+
 	<build>
+		<plugins>
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-compiler-plugin</artifactId>
+				<version>3.5.1</version>
+				<configuration>
+					<source>1.7</source>
+					<target>1.7</target>
+				</configuration>
+			</plugin>
+		</plugins>
 		<finalName>store</finalName>
 	</build>
 </project>
