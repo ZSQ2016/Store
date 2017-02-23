@@ -179,6 +179,7 @@
 	</dependencies>
 
 	<build>
+		<finalName>store</finalName>
 		<plugins>
 			<plugin>
 				<groupId>org.apache.maven.plugins</groupId>
@@ -190,6 +191,17 @@
 				</configuration>
 			</plugin>
 		</plugins>
-		<finalName>store</finalName>
+		<!--  <resources>
+			<resource>
+				<directory>src/main/java</directory>
+				<includes>
+					<include>**/*.xml</include>
+				</includes>
+			</resource>
+			<resource>
+				<directory>src/main/resources</directory>
+			</resource>
+		</resources>
+		-->
 	</build>
 </project>

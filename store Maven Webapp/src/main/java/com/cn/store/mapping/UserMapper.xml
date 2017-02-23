@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
-<!-- namespace:当前库表映射文件的命名空间，唯一的不能重复  被session调用实现-->
-<mapper namespace="com.cn.store.dao.IUserDao.UserMapper" >
+<!-- namespace:当前库表映射文件的命名空间，唯一的不能重复 需对应dao路径  被session调用实现 -->
+<mapper namespace="com.cn.store.dao.IUserDao" >
   <!-- type:映射实体类的数据类型 id：resultMap的唯一标识 -->
   <resultMap id="BaseResultMap" type="com.cn.store.pojo.User" >
   <!-- column:库表的字段名 property:实体类里的属性名 -->

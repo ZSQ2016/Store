@@ -15,10 +15,8 @@ public class UserServiceImpl  implements IUserService {
 	private IUserDao userDao;  
 	@Override  
 	public User getUserById(int userId) {  
-		// TODO Auto-generated method stub  
-		System.out.println(userDao.toString()+"   "+userId);
-		User user= this.userDao.selectByPrimaryKey(userId);
-		System.out.println("22222");
+		// TODO Auto-generated method stub  		
+		User user= this.userDao.selectByPrimaryKey(userId);		
 		return user;
 	}
 }
