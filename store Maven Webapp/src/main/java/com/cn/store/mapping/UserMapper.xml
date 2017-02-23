@@ -1,7 +1,10 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
-<mapper namespace="test.IDao.UserMapper" >
-  <resultMap id="BaseResultMap" type="test.domain.User" >
+<!-- namespace:当前库表映射文件的命名空间，唯一的不能重复  被session调用实现-->
+<mapper namespace="com.cn.store.dao.IUserDao.UserMapper" >
+  <!-- type:映射实体类的数据类型 id：resultMap的唯一标识 -->
+  <resultMap id="BaseResultMap" type="com.cn.store.pojo.User" >
+  <!-- column:库表的字段名 property:实体类里的属性名 -->
     <id column="id" property="id" jdbcType="INTEGER" />
     <result column="user_name" property="userName" jdbcType="VARCHAR" />
     <result column="password" property="password" jdbcType="VARCHAR" />
@@ -9,7 +12,13 @@
   </resultMap>
   <sql id="Base_Column_List" >
     id, user_name, password, age
-  </sql>
+  </sql>  
+  <!--id:当前sql的唯一标识
+		 parameterType：输入参数的数据类型 
+		 resultMap:适合使用返回值是自定义实体类的情况 
+         resultType：适合使用返回值的数据类型是非自定义的，即jdk的提供的类型 
+		 #{}:用来接受参数的，如果是传递一个参数#{id}内容任意，如果是多个参数就有一定的规则,采用的是预编译的形式select 
+		* from person p where p.id = ? ，安全性很高 -->
   <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
     select 
     <include refid="Base_Column_List" />
@@ -20,13 +29,13 @@
     delete from user_t
     where id = #{id,jdbcType=INTEGER}
   </delete>
-  <insert id="insert" parameterType="test.domain.User" >
+  <insert id="insert" parameterType="com.cn.store.pojo.User" >
     insert into user_t (id, user_name, password, 
       age)
     values (#{id,jdbcType=INTEGER}, #{userName,jdbcType=VARCHAR}, #{password,jdbcType=VARCHAR}, 
       #{age,jdbcType=INTEGER})
   </insert>
-  <insert id="insertSelective" parameterType="test.domain.User" >
+  <insert id="insertSelective" parameterType="com.cn.store.pojo.User" >
     insert into user_t
     <trim prefix="(" suffix=")" suffixOverrides="," >
       <if test="id != null" >
@@ -57,7 +66,7 @@
       </if>
     </trim>
   </insert>
-  <update id="updateByPrimaryKeySelective" parameterType="test.domain.User" >
+  <update id="updateByPrimaryKeySelective" parameterType="com.cn.store.pojo.User" >
     update user_t
     <set >
       <if test="userName != null" >
@@ -72,7 +81,7 @@
     </set>
     where id = #{id,jdbcType=INTEGER}
   </update>
-  <update id="updateByPrimaryKey" parameterType="test.domain.User" >
+  <update id="updateByPrimaryKey" parameterType="com.cn.store.pojo.User" >
     update user_t
     set user_name = #{userName,jdbcType=VARCHAR},
       password = #{password,jdbcType=VARCHAR},

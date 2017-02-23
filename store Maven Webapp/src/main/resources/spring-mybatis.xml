@@ -10,7 +10,7 @@
                         http://www.springframework.org/schema/mvc    
                         http://www.springframework.org/schema/mvc/spring-mvc-4.0.xsd">  
     <!-- 自动扫描 设置需要注解的类所在的包-->  
-    <context:component-scan base-package="com.cn.hnust" />  
+    <context:component-scan base-package="com.cn.store" />  
     <!-- 引入配置文件 -->  
     <bean id="propertyConfigurer"  
         class="org.springframework.beans.factory.config.PropertyPlaceholderConfigurer">  
@@ -41,17 +41,18 @@
     <bean id="sqlSessionFactory" class="org.mybatis.spring.SqlSessionFactoryBean">  
         <property name="dataSource" ref="dataSource" />  
         <!--mapperLocations 属性使用一个资源位置的 list。 这个属性可以用来指定 MyBatis 的 XML 映射器文件的位置 -->  
-        <property name="mapperLocations" value="classpath:com/cn/hnust/mapping/*.xml"></property>  
+        <property name="mapperLocations" value="classpath:com/cn/store/mapping/*.xml"></property>  
     </bean>  
   
     <!-- DAO接口所在包名，Spring会自动查找其下的类 -->  
     <!-- MapperScannerConfigurer创建MapperFactoryBean,代理接口对象,用sqlsession调用xml中的sql语句 -->
-    <bean class="org.mybatis.spring.mapper.MapperScannerConfigurer">
+    <bean class="org.mybatis.spring.mapper.MapperScannerConfigurer">  
          <!-- 查找包下的所有接口，并为它们创建MapperFactoryBean -->  
-        <property name="basePackage" value="com.cn.hnust.dao" />  
+         <property name="basePackage" value="com.cn.store.dao" />        
         <property name="sqlSessionFactoryBeanName" value="sqlSessionFactory"></property>  
     </bean>  
-  
+ 
+    
     <!-- (事务管理)在需要开启事务的时候，DataSourceTransactionManager 从DataSource中取得一个连接，开启事务。 -->  
     <bean id="transactionManager"  
         class="org.springframework.jdbc.datasource.DataSourceTransactionManager">  
